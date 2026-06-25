@@ -1,0 +1,67 @@
+Disease: Type2 Diabetes
+
+Category: Lifestyle
+
+Overview:
+Type2 Diabetes is a medical condition that may affect overall health and daily functioning. Early recognition and appropriate medical care are important.
+
+Common Symptoms:
+- Fatigue
+- Pain or discomfort
+- Fever or weakness
+- Reduced daily activity tolerance
+- Condition-specific symptoms
+
+Emergency Symptoms:
+- Difficulty breathing
+- Severe pain
+- Confusion
+- Loss of consciousness
+- Severe dehydration
+
+Risk Level Indicators:
+
+Low Risk:
+- Mild symptoms
+- Normal eating and drinking
+- Stable condition
+
+Moderate Risk:
+- Persistent symptoms
+- Weakness or discomfort
+- Reduced appetite or activity
+
+High Risk:
+- Severe symptoms
+- Organ complications
+- Emergency warning signs
+
+Precautions:
+- Maintain proper hygiene
+- Stay hydrated
+- Take adequate rest
+- Follow healthy lifestyle habits
+- Avoid known triggers
+
+Treatment Guidance:
+- Follow doctor-recommended treatment
+- Monitor symptoms regularly
+- Maintain hydration and nutrition
+- Seek medical care if symptoms worsen
+
+When to Consult a Doctor:
+- Symptoms persist or worsen
+- Emergency symptoms appear
+- Daily activities become difficult
+- Severe weakness develops
+
+Prevention:
+- Maintain healthy lifestyle habits
+- Practice hygiene and sanitation
+- Attend regular medical checkups
+- Follow preventive healthcare advice
+
+Source References:
+- WHO guidelines
+- CDC medical information
+- National health authority recommendations
