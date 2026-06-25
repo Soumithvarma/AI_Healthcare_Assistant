@@ -526,7 +526,7 @@ if "processing" not in st.session_state:
     st.session_state.processing = False
 
 
-prompt = st.chat_input("Describe your symptoms...")
+prompt = st.chat_input("Describe your symptoms... (Ex:I have fever, headache, and nausea for 2 days)")
 
 
 if prompt and not st.session_state.processing:
