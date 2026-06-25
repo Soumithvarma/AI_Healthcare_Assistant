@@ -3,44 +3,37 @@ import joblib
 import pandas as pd
 
 
-# ==========================================
-# LOAD SAVED MODEL
-# ==========================================
 
 model = joblib.load("backend/models/risk_model.pkl")
 
 
-# ==========================================
-# RISK PREDICTION FUNCTION
-# ==========================================
+
 
 def predict_risk(symptoms, duration):
 
-    # Convert list → string
+
     symptom_text = " ".join(symptoms)
 
-    # Create dataframe
+   
     sample = pd.DataFrame({
         "symptom_text": [symptom_text],
         "duration_days": [duration]
     })
 
-    # Predict class
+
     prediction = model.predict(sample)[0]
 
-    # Predict probabilities
+  
     probabilities = model.predict_proba(sample)[0]
 
-    # Store scores
+  
     prob_dict = {}
 
     for label, prob in zip(model.classes_, probabilities):
 
         prob_dict[label] = round(prob * 100, 2)
 
-    # ======================================
-    # SMART RISK INTERPRETATION
-    # ======================================
+
 
     sorted_probs = sorted(
         prob_dict.items(),

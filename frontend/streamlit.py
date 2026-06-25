@@ -3,7 +3,6 @@ import os
 import html
 import time
 
-# Add project root directory to Python path
 sys.path.append(
     os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..")
@@ -17,9 +16,7 @@ from backend.risk_predictor import predict_risk
 from backend.rag_chatbot import get_rag_response
 
 
-# ==========================================
-# PAGE CONFIG
-# ==========================================
+
 
 st.set_page_config(
     page_title="AI Healthcare Assistant",
@@ -27,9 +24,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ==========================================
-# SESSION STATE
-# ==========================================
+
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -44,18 +39,12 @@ if len(st.session_state.messages) == 0:
         </p>
     </div>
     """, unsafe_allow_html=True)
-# ==========================================
-# CSS
-# ==========================================
 
 st.markdown("""
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* =========================================
-   GLOBAL
-========================================= */
 
 html,
 body,
@@ -101,7 +90,7 @@ body,
 }
 
 
-/* REMOVE STREAMLIT STUFF */
+
 
 header,
 footer,
@@ -113,7 +102,7 @@ footer,
 }
 
 
-/* MAIN LAYOUT */
+
 
 .block-container {
     padding-top: 1rem !important;
@@ -124,7 +113,7 @@ footer,
 }
 
 
-/* REMOVE BOTTOM WHITE/GREY BLOCK */
+
 
 [data-testid="stBottom"],
 [data-testid="stBottomBlockContainer"] {
@@ -138,9 +127,7 @@ footer,
     box-shadow: none !important;
 }
 
-/* =========================================
-   WELCOME MESSAGE
-========================================= */
+
             
 .welcome-box{
 
@@ -230,9 +217,7 @@ footer,
     }
 }
 
-/* =========================================
-   MESSAGE ROW
-========================================= */
+
 
 .message-row {
     display: flex;
@@ -249,9 +234,7 @@ footer,
 }
 
 
-/* =========================================
-   USER MESSAGE
-========================================= */
+
 
 .user-bubble {
 
@@ -280,9 +263,7 @@ footer,
 }
 
 
-/* =========================================
-   AI MESSAGE
-========================================= */
+
 
 .ai-bubble {
 
@@ -316,9 +297,7 @@ footer,
 }
 
 
-/* =========================================
-   CHAT INPUT
-========================================= */
+
 
 .stChatInput {
     position: fixed !important;
@@ -341,7 +320,7 @@ footer,
 }
 
 
-/* OUTER WRAPPER */
+
 
 [data-testid="stChatInput"] {
     background: transparent !important;
@@ -352,7 +331,7 @@ footer,
 }
 
 
-/* REAL INPUT CONTAINER */
+
 
 [data-testid="stChatInput"] > div {
 
@@ -377,7 +356,7 @@ footer,
 }
 
 
-/* HOVER */
+
 
 [data-testid="stChatInput"] > div:hover {
 
@@ -389,7 +368,7 @@ footer,
 }
 
 
-/* TEXTAREA */
+
 
 [data-testid="stChatInput"] textarea {
 
@@ -413,14 +392,14 @@ footer,
 }
 
 
-/* PLACEHOLDER */
+
 
 [data-testid="stChatInput"] textarea::placeholder {
     color: #9CA3AF !important;
 }
 
 
-/* REMOVE OUTLINE */
+
 
 textarea,
 textarea:focus,
@@ -430,7 +409,7 @@ textarea:active {
 }
 
 
-/* SEND BUTTON */
+
 
 [data-testid="stChatInputSubmitButton"] {
 
@@ -446,7 +425,7 @@ textarea:active {
 }
 
 
-/* SEND BUTTON HOVER */
+
 
 [data-testid="stChatInputSubmitButton"]:hover {
 
@@ -455,9 +434,6 @@ textarea:active {
     transform: scale(1.05);
 }
 
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
 
 @media (max-width: 768px) {
 
@@ -503,9 +479,6 @@ textarea:active {
         font-size: 14px !important;
     }
 }
-/* =========================================
-   ANIMATIONS
-========================================= */
 
 @keyframes fadeIn {
 
@@ -524,23 +497,6 @@ textarea:active {
 </style>
 """, unsafe_allow_html=True)
 
-# ==========================================
-# SIDEBAR
-# ==========================================
-
-
-
-# ==========================================
-# DISPLAY CHAT MESSAGES
-# ==========================================
-# NOTE: Streamlit's markdown renderer treats a block starting with a tag
-# like <div> as raw HTML only until the next BLANK LINE. After that blank
-# line it switches back to normal Markdown parsing, and any indented text
-# (4+ spaces) gets rendered as a literal code block. That's what caused the
-# stray "</div></div>" code box in the screenshot.
-#
-# Fix: build each HTML snippet as a single unindented line, with no blank
-# lines inside it, before passing it to st.markdown().
 
 for msg in st.session_state.messages:
 
@@ -568,9 +524,7 @@ for msg in st.session_state.messages:
 
 if "processing" not in st.session_state:
     st.session_state.processing = False
-# ==========================================
-# CHAT INPUT
-# ==========================================
+
 
 prompt = st.chat_input("Describe your symptoms...")
 
@@ -586,15 +540,8 @@ if prompt and not st.session_state.processing:
 
     st.rerun()
 
-# ==========================================
-# USER MESSAGE
-# ==========================================
 
 
-
-# ==========================================
-# AI RESPONSE FLOW
-# ==========================================
 
 if st.session_state.processing:
 
@@ -603,9 +550,7 @@ if st.session_state.processing:
     with st.spinner("Analyzing symptoms..."):
         time.sleep(4)
 
-    # ======================================
-    # EXTRACT SYMPTOMS
-    # ======================================
+   
 
     result = extract_symptoms(last_message)
 
@@ -649,9 +594,7 @@ if st.session_state.processing:
             f"<i>Answers provided by this AI assistant are for educational purposes only — not a substitute for professional medical advice.</i>"
         )
 
-    # ======================================
-    # SAVE ASSISTANT MESSAGE
-    # ======================================
+ 
 
     st.session_state.messages.append({
         "role": "assistant",

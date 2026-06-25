@@ -4,9 +4,7 @@ from groq import Groq
 from dotenv import load_dotenv
 import os
 
-# ==========================================
-# LOAD ENV VARIABLES
-# ==========================================
+
 
 load_dotenv()
 
@@ -14,17 +12,13 @@ API_KEY = os.getenv("GROQ_API_KEY")
 
 client = Groq(api_key=API_KEY)
 
-# ==========================================
-# LOAD EMBEDDING MODEL
-# ==========================================
+
 
 embedding_model = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
-# ==========================================
-# LOAD CHROMA DB
-# ==========================================
+
 
 vectorstore = Chroma(
     persist_directory="chroma_db",
@@ -35,17 +29,13 @@ retriever = vectorstore.as_retriever(
     search_kwargs={"k": 5}
 )
 
-# ==========================================
-# RAG FUNCTION
-# ==========================================
+
 
 def get_rag_response(user_query):
 
     try:
 
-        # ==================================
-        # RETRIEVE DOCUMENTS
-        # ==================================
+        
 
         retrieved_docs = retriever.invoke(user_query)
 
@@ -55,18 +45,13 @@ def get_rag_response(user_query):
                 "information for this query."
             )
 
-        # ==================================
-        # BUILD CONTEXT
-        # ==================================
+    
 
         context = "\n\n".join(
             [doc.page_content for doc in retrieved_docs]
         )
 
-        # ==================================
-        # FINAL PROMPT
-        # ==================================
-
+ 
         prompt = f"""
 
 You are a medically cautious AI healthcare assistant.
@@ -101,9 +86,7 @@ If it is a medical query, provide:
 
 Keep the response concise, medically safe, and easy to understand.
 """
-        # ==================================
-        # GROQ RESPONSE
-        # ==================================
+    
 
         response = client.chat.completions.create(
             model="groq/compound",

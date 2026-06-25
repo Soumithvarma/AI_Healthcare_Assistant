@@ -1,4 +1,3 @@
-# backend/symptom_extractor.py
 
 
 import json
@@ -9,9 +8,6 @@ from groq import Groq
 from dotenv import load_dotenv
 
 
-# ==========================================
-# LOAD ENV VARIABLES
-# ==========================================
 
 load_dotenv()
 
@@ -20,9 +16,7 @@ API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=API_KEY)
 
 
-# ==========================================
-# SYMPTOM EXTRACTION FUNCTION
-# ==========================================
+
 
 def extract_symptoms(user_input):
 
@@ -69,7 +63,7 @@ User Text:
 
         raw_text = response.choices[0].message.content.strip()
 
-        # Remove markdown formatting
+     
         raw_text = re.sub(r"```json|```", "", raw_text).strip()
 
         data = json.loads(raw_text)
