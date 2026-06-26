@@ -4,3 +4,4 @@ __pycache__/
 chroma_db/
 venv/
 .venv/
+backend/models/risk_model.pkl
