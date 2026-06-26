@@ -4,7 +4,7 @@ import pandas as pd
 
 
 
-model = joblib.load("backend/models/risk_model.pkl")
+model = joblib.load("backend/risk_model.pkl")
 
 
 
